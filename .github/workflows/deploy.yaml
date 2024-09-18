@@ -34,5 +34,5 @@ jobs:
           script: |
             mkdir -p prometheus
             cd ~/prometheus
-            git pull origin main
+            # git pull origin main
             
