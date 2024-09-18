@@ -11,8 +11,8 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
-    ports:
-      - 9090:9090
+    expose:
+      - 9090
     links:
       - cadvisor:cadvisor
       - alertmanager:alertmanager
@@ -30,8 +30,8 @@ services:
       - '--path.sysfs=/host/sys'
       - --collector.filesystem.ignored-mount-points
       - '^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)'
-    ports:
-      - 9100:9100
+    expose:
+      - 9100
     restart: always
     deploy:
       mode: global
@@ -39,8 +39,8 @@ services:
   alertmanager:
     image: prom/alertmanager
     restart: always
-    ports:
-      - 9093:9093
+    expose:
+      - 9093
     volumes:
       - ./alertmanager/:/etc/alertmanager/
     command:
@@ -71,8 +71,8 @@ services:
       - ./grafana/provisioning/:/etc/grafana/provisioning/
     env_file:
       - ./grafana/config.monitoring
-    ports:
-      - 3000:3000
+    expose:
+      - 3000
     depends_on:
       - prometheus
 
