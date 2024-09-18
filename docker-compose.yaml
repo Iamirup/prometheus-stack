@@ -71,17 +71,11 @@ services:
       - ./grafana/provisioning/:/etc/grafana/provisioning/
     env_file:
       - ./grafana/config.monitoring
-    expose:
-      - 3000
+    ports:
+      - 3000:3000
     depends_on:
       - prometheus
-    networks:
-      - edubot_nginx-net
-    
+
 volumes:
   prometheus_data: {}
   grafana_data: {}
-
-networks:
-  edubot_nginx-net:
-    external: true
