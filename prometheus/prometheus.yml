@@ -49,7 +49,7 @@ scrape_configs:
 
     dns_sd_configs:
     - names:
-      - 'tasks.cadvisor'
+      - tasks.cadvisor
       type: 'A'
       port: 8080
 
@@ -63,7 +63,7 @@ scrape_configs:
 
     dns_sd_configs:
     - names:
-      - 'tasks.node-exporter'
+      - tasks.node-exporter
       type: 'A'
       port: 9100
 
